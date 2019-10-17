@@ -1,0 +1,22 @@
+{
+    "name": "kraken/module-product-options-tooltips",
+    "description": "Add tooltips to configurable products and custom options",
+    "type": "magento2-module",
+    "license": "OSL-3.0",
+    "authors": [
+        {
+            "email": "erik@krakencommerce.com",
+            "name": "Erik Hansen"
+        }
+    ],
+    "minimum-stability": "dev",
+    "require": {},
+    "autoload": {
+        "files": [
+            "registration.php"
+        ],
+        "psr-4": {
+            "Kraken\\ProductOptionsTooltips\\": ""
+        }
+    }
+}
