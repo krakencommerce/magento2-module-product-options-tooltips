@@ -47,7 +47,7 @@ Add tooltips to configurable products and custom options.
 
 ```bash
 composer config repositories.kraken/module-product-options-tooltips git git@github.com:krakencommerce/magento2-module-product-options-tooltips.git
-composer require kraken/module-product-options-tooltips:dev-develop
+composer require kraken/module-product-options-tooltips:dev-master
 bin/magento module:enable --clear-static-content Kraken_ProductOptionsTooltips
 bin/magento setup:upgrade
 bin/magento cache:flush
