@@ -46,8 +46,8 @@ Add tooltips to configurable products and custom options.
 ### Option 1 - Install extension using Composer (default approach)
 
 ```bash
-composer config repositories.kraken/extension-name git git@github.com:krakencommerce/magento2-module-product-options-tooltips.git
-composer require kraken/extension-name:dev-develop
+composer config repositories.kraken/module-product-options-tooltips git git@github.com:krakencommerce/magento2-module-product-options-tooltips.git
+composer require kraken/module-product-options-tooltips:dev-develop
 bin/magento module:enable --clear-static-content Kraken_ProductOptionsTooltips
 bin/magento setup:upgrade
 bin/magento cache:flush
@@ -70,7 +70,7 @@ These instructions work regardless of how you installed the extension:
 ```bash
 bin/magento module:disable --clear-static-content Kraken_ProductOptionsTooltips
 rm -rf app/code/Kraken/ProductOptionsTooltips
-composer remove kraken/extension-name
+composer remove kraken/module-product-options-tooltips
 mr2 db:query 'DELETE FROM `setup_module` WHERE `module` = "Kraken_ProductOptionsTooltips"'
 bin/magento cache:flush
 ```
