@@ -6,6 +6,8 @@ Add tooltips to configurable products and custom options.
 
 Partially inspired by [Spaggel_Tooltip](https://github.com/Spaggel/Tooltip) (I only discovered this extension after I had mostly built this extension).
 
+Currently supports configurable attributes (both dropdown and swatch). TODO: Add support for custom options (see XCH codebase).
+
 ## Usage Instructions
 
 **User Stories & Acceptance Criteria**
