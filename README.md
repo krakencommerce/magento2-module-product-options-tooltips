@@ -4,6 +4,8 @@
 
 Add tooltips to configurable products and custom options.
 
+Partially inspired by [Spaggel_Tooltip](https://github.com/Spaggel/Tooltip) (I only discovered this extension after I had mostly built this extension).
+
 ## Usage Instructions
 
 **User Stories & Acceptance Criteria**
@@ -46,7 +48,7 @@ Add tooltips to configurable products and custom options.
 ### Option 1 - Install extension using Composer (default approach)
 
 ```bash
-composer config repositories.kraken/module-product-options-tooltips git git@github.com:krakencommerce/magento2-module-product-options-tooltips.git
+composer config repositories.kraken/module-product-options-tooltips git https://github.com/krakencommerce/magento2-module-product-options-tooltips.git
 composer require kraken/module-product-options-tooltips:dev-master
 bin/magento module:enable --clear-static-content Kraken_ProductOptionsTooltips
 bin/magento setup:upgrade
