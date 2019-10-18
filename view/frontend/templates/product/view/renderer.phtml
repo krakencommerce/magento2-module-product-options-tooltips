@@ -9,10 +9,49 @@
 <?php /** @var $block \Magento\Swatches\Block\Product\Renderer\Configurable */ ?>
 <div class="swatch-opt" data-role="swatch-options"></div>
 
+<?php // BEGIN EDIT ?>
+
+<?php
+$blocksByOptionName = null;
+try {
+    $jsonConfig = $block->getJsonConfig();
+    $jsonConfigDecoded = json_decode($jsonConfig);
+    $attributes = $jsonConfigDecoded->attributes;
+    $optionNames = array_map(
+        function($attribute) {
+            return $attribute->label;
+        }, get_object_vars($attributes) // Convert object to array
+    );
+    // Preload blocks
+    /** @var \Kraken\ProductOptionsTooltips\Helper\Data $helper */
+    $helper = $this->helper(\Kraken\ProductOptionsTooltips\Helper\Data::class);
+    $sku = $block->getProduct()->getSku();
+    // Preload
+    $helper->getOptionTooltips($optionNames, $sku);
+
+    $blocksByOptionName = [];
+    foreach($optionNames as $optionName) {
+        $tooltipContent = $helper->getOptionTooltip($optionName, $sku);
+        $normalizedOptionName = $helper->normalizeString($optionName);
+        if ($tooltipContent) {
+            $blocksByOptionName[$normalizedOptionName] = $tooltipContent;
+        }
+    }
+} catch (\Throwable $e) {
+    // Do nothing
+}
+?>
+
+<?php // END EDIT ?>
+
+
 <script type="text/x-magento-init">
     {
         "[data-role=swatch-options]": {
             "Magento_Swatches/js/swatch-renderer": {
+                <?php // BEGIN EDIT ?>
+                "productOptionsTooltips" : <?= json_encode($blocksByOptionName) ?>,
+                <?php // END EDIT ?>
                 "jsonConfig": <?= /* @escapeNotVerified */ $swatchOptions = $block->getJsonConfig() ?>,
                 "jsonSwatchConfig": <?php /* @escapeNotVerified */
                     echo $swatchOptions = $block->getJsonSwatchConfig(); ?>,

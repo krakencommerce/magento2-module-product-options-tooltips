@@ -4,7 +4,6 @@ define([
 ], function ($) {
   'use strict';
 
-
   return function () {
     var viewportWidth = Math.max(document.documentElement.clientWidth, window.innerWidth || 0);
 

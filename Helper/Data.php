@@ -69,6 +69,10 @@ class Data extends AbstractHelper
             $blockIds[] = $this->normalizeOptionName($optionName);
         }
 
+        foreach ($blockIds as $blockId) {
+            $this->_productTooltipOptionsCache[$blockId] = false;
+        }
+
         $blocks = $this->getCmsBlocks($blockIds);
 
         $blocksByIdentifier = [];
@@ -93,10 +97,15 @@ class Data extends AbstractHelper
         $blockIdentifierWithSku = $this->normalizeOptionName($optionName, $sku);
         $blockIdentifier = $this->normalizeOptionName($optionName);
 
-        if (isset($this->_productTooltipOptionsCache[$blockIdentifierWithSku])) {
+        // If option name has never been attempted to be loaded, preload option
+        if (!isset($this->_productTooltipOptionsCache[$blockIdentifier])) {
+            $this->getOptionTooltips([$optionName], $sku);
+        }
+
+        if (!empty($this->_productTooltipOptionsCache[$blockIdentifierWithSku])) {
             return $this->_productTooltipOptionsCache[$blockIdentifierWithSku];
         }
-        if (isset($this->_productTooltipOptionsCache[$blockIdentifier])) {
+        if (!empty($this->_productTooltipOptionsCache[$blockIdentifier])) {
             return $this->_productTooltipOptionsCache[$blockIdentifier];
         }
 
