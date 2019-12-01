@@ -15,7 +15,8 @@ define([
       // Custom trigger so this will work on iOS
       trigger: 'custom',
       triggerOpen: { mouseenter: true, touchstart: true },
-      triggerClose: { mouseleave: true, tap: true }
+      triggerClose: { mouseleave: true, tap: true },
+      debug: false,
     });
   };
 });
