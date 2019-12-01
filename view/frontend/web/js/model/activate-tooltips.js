@@ -16,7 +16,7 @@ define([
       trigger: 'custom',
       triggerOpen: { mouseenter: true, touchstart: true },
       triggerClose: { mouseleave: true, tap: true },
-      debug: false,
+      debug: false
     });
   };
 });
